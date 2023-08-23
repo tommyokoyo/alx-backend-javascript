@@ -3,12 +3,12 @@ import uploadPhoto from './5-photo-reject';
 
 export default function handleProfileSignup(firstName = '', lastName = '', fileName = '') {
   const user = signUpUser(firstName, lastName).then((value) => ({
-    status: 200,
+    status: 'fulfilled',
     value,
   }));
 
   const photoUpload = uploadPhoto(fileName).catch((error) => ({
-    status: 404,
+    status: 'rejected',
     value: error.toString(),
   }));
 
