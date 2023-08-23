@@ -19,10 +19,10 @@ export default function handleProfileSignup(firstName = '', lastName = '', fileN
  */
 
 const promises = [
-  Promise.resolve('Fulfiled promise'),
+  Promise.resolve('Fulfilled promise'),
   // eslint-disable-next-line prefer-promise-reject-errors
   Promise.reject('Rejected Promise'),
-  Promise.resolve('Another fullfiled promise'),
+  Promise.resolve('Another fulfilled promise'),
 ];
 
 Promise.allSettled(promises)
