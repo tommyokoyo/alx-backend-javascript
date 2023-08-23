@@ -17,3 +17,15 @@ export default function handleProfileSignup(firstName = '', lastName = '', fileN
   return Promise.resolve([user, photoUpload]);
 }
  */
+
+const promises = [
+  Promise.resolve('Fulfiled promise'),
+  // eslint-disable-next-line prefer-promise-reject-errors
+  Promise.reject('Rejected Promise'),
+  Promise.resolve('Another fullfiled promise'),
+];
+
+Promise.allSettled(promises)
+  .then((results) => {
+    console.log(results);
+  });
