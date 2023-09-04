@@ -1,11 +1,12 @@
 const fs = require('fs');
 function countStudents(path) {
+    const fieldCounts = {};
+    const fields_in_obj = {};
+
     try {
         const data = fs.readFileSync(path, 'utf-8');
         const extracted_lines = data.split('\n').filter((line) => line.trim() !== '');
         const persons = extracted_lines.filter((person) => person).map((item) => item.split(','));
-        const fieldCounts = {};
-        const fields_in_obj = {};
 
         persons.forEach((line) => {
             const field_0 = line[0];
@@ -23,11 +24,10 @@ function countStudents(path) {
 
         const totalStudents = extracted_lines.length;
 
-        console.log(`Number of Students: ${totalStudents}`);
+        console.log(`Number of Students: ${totalStudents - 1}`);
         for (const key in fieldCounts) {
             console.log(`Number of students in ${key}: ${fieldCounts[key]}. List: ${fields_in_obj[key]}`)
         }
-
 
     } catch (error) {
         if (error.code === 'ENOENT') {
