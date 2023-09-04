@@ -33,7 +33,7 @@ function countStudents(path) {
 
     } catch (error) {
         if (error.code === 'ENOENT') {
-            console.error('Cannot load the database: File not found');
+            throw new Error('Cannot load the database')
         } else {
             console.error('An error occurred while reading the database: ', error.message);
         }
