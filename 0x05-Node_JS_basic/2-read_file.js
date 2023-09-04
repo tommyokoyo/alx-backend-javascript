@@ -24,7 +24,7 @@ function countStudents(path) {
 
         const totalStudents = extracted_lines.length;
 
-        console.log(`Number of Students: ${totalStudents - 1}`);
+        console.log(`Number of students: ${totalStudents - 1}`);
         for (const key in fieldCounts) {
             console.log(`Number of students in ${key}: ${fieldCounts[key]}. List: ${fields_in_obj[key]}`)
         }
