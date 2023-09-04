@@ -2,6 +2,7 @@ const fs = require('fs');
 function countStudents(path) {
     const fieldCounts = {};
     const fields_in_obj = {};
+    let total_students = 0;
 
     try {
         const data = fs.readFileSync(path, 'utf-8');
@@ -19,12 +20,13 @@ function countStudents(path) {
                 }
                 fields_in_obj[field_3].push(field_0);
                 fieldCounts[field_3] += 1;
+                total_students += 1;
             }
         });
 
-        const totalStudents = extracted_lines.length;
 
-        console.log(`Number of students: ${totalStudents - 1}`);
+
+        console.log(`Number of students: ${total_students}`);
         for (const key in fieldCounts) {
             console.log(`Number of students in ${key}: ${fieldCounts[key]}. List: ${fields_in_obj[key]}`)
         }
