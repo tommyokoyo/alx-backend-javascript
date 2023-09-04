@@ -4,7 +4,7 @@ const hostname = '127.0.0.1';
 port = 1245;
 
 const app = http.createServer((req, res) => {
-    res.statuscode = 200;
+    res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
 });
