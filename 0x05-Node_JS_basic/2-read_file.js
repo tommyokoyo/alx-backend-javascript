@@ -8,6 +8,7 @@ const countStudents = (path) => {
   } catch (err) {
     throw new Error('Cannot load the database');
   }
+
   data = data.split('\n');
   let students = data.filter((student) => student);
   students = students.map((item) => item.split(','));

@@ -7,43 +7,43 @@ function countStudents(path) {
             (err, data) => {
                 if (err) {
                     reject(Error('Cannot load the database'));
-                    return;
-                }
-                const response = [];
-                let msg;
+                } else {
+                    const response = [];
+                    let msg;
 
-                const content = data.split('\n');
+                    const content = data.split('\n');
 
-                let students = content.filter((item) => item);
+                    let students = content.filter((item) => item);
 
-                students = students.map((item) => item.split(','));
+                    students = students.map((item) => item.split(','));
 
-                const studentSize = students.length ? students.length - 1 : 0;
-                msg = `Number of students: ${studentSize}`;
-                console.log(msg);
-
-                response.push(msg);
-
-                const fields = {};
-                for (const i in students) {
-                    if (i !== 0) {
-                        if (!fields[students[i][3]]) fields[students[i][3]] = [];
-
-                        fields[students[i][3]].push(students[i][0]);
-                    }
-                }
-
-                delete fields.field;
-
-                for (const key of Object.keys(fields)) {
-                    msg = `Number of students in ${key}: ${fields[key].length
-                    }. List: ${fields[key].join(', ')}`;
-
+                    const studentSize = students.length ? students.length - 1 : 0;
+                    msg = `Number of students: ${studentSize}`;
                     console.log(msg);
 
                     response.push(msg);
+
+                    const fields = {};
+                    for (const i in students) {
+                        if (i !== 0) {
+                            if (!fields[students[i][3]]) fields[students[i][3]] = [];
+
+                            fields[students[i][3]].push(students[i][0]);
+                        }
+                    }
+
+                    delete fields.field;
+
+                    for (const key of Object.keys(fields)) {
+                        msg = `Number of students in ${key}: ${fields[key].length
+                        }. List: ${fields[key].join(', ')}`;
+
+                        console.log(msg);
+
+                        response.push(msg);
+                    }
+                    resolve(response);
                 }
-                resolve(response);
             });
     });
 }
