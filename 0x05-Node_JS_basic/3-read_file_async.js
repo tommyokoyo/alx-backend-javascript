@@ -14,10 +14,8 @@ function countStudents(path) {
           const content = data.split('\n');
 
           let students = content.filter((item) => item);
-          students = students.map((value) => value.slice(0, -1));
 
           students = students.map((item) => item.split(','));
-          students.shift();
           console.log(students);
 
           const studentSize = students.length ? students.length : 0;
