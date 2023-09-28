@@ -17,8 +17,10 @@ function countStudents(path) {
           students = students.map((value) => value.slice(0, -1));
 
           students = students.map((item) => item.split(','));
+          students.shift();
+          console.log(students);
 
-          const studentSize = students.length ? students.length - 1 : 0;
+          const studentSize = students.length ? students.length : 0;
           msg = `Number of students: ${studentSize}`;
           console.log(msg);
 
