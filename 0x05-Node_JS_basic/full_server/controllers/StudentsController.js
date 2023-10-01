@@ -2,17 +2,13 @@ const readDatabase = require('../utils');
 
 class StudentsController {
   static async getAllStudents(req, res) {
-    const response = [];
+    const response = {};
     let msg;
-    response.push('This is the list of our students');
     try {
-      const { studentsData } = await readDatabase();
-
-      for (const key of Object.keys(studentsData)) {
-        msg = `Number of students in ${key}: ${studentsData[key].length}. List: ${studentsData[key].join(', ')}`;
-        response.push(msg);
-      }
-      res.status(200).send(response);
+      let studentsData = await readDatabase('../database.csv');
+      const data = Object.entries(studentsData);
+      let final_data
+      res.status(200).send(SWE);
     } catch (error) {
       res.status(500).send(error.message);
     }
@@ -24,7 +20,7 @@ class StudentsController {
       res.status(500).send('Major parameter must be CS or SWE');
     }
     try {
-      const { studentData } = await readDatabase();
+      const studentData = await readDatabase('../database.csv');
       if (major === 'SWE') {
         res.status(200).send(`List: ${studentData[' SWE'].join(', ')}`);
       } else {
